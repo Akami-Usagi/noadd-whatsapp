@@ -1,30 +1,41 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const MainDiv = styled.div`
     width: 100%;
-    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #363636;
     color: white;
+    
 `
 const ContentDiv = styled.div`
     width: fit-content;
     height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 600px){
+        position: relative;
+        bottom: 120px;
+    }
 `
 const InputDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     
+    
 `
 const MainImg = styled.img`
     width: 250px;
-    position: relative;
-    left: 20px;
+    
 `
 const MainInput = styled.input`
     width: 230px;
@@ -74,8 +85,11 @@ export default function Main(){
         if(event.key === "Enter"){
             window.open(`https://api.whatsapp.com/send?phone=57${number}`, "_blank");
         }
-        
     }
+    useEffect(()=>{
+        document.body.style.overflow = "hidden"
+        
+    })
 
     return(
         <MainDiv>
